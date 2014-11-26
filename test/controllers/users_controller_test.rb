@@ -10,4 +10,5 @@ include ApplicationHelper
   	assert_select "title", full_title("Sign up")
   end
 
+
 end

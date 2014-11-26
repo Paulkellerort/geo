@@ -45,10 +45,10 @@ class UserTest < ActiveSupport::TestCase
 
 	test "email is valid format" do
 		invalid_emails = %w[user@example,com user_at_foo.org user.name@example.
-                           foo@bar_baz.com foo@bar+baz.com]
+                           foo@bar_baz.com foo@bar+baz.com, foo@bar..com]
     invalid_emails.each do |x|
      @user.email = x
-     assert_not @user.valid?, "#{invalid_emails.inspect} should be invalid"
+     assert_not @user.valid?, "#{x.inspect} should be invalid"
   	end
   end
 
@@ -58,6 +58,16 @@ class UserTest < ActiveSupport::TestCase
   	duplicate_user.save
   	assert_not duplicate_user.valid?
   end
+
+  test "emails saved as lowercase" do
+    invalid_emails = "FOObaR@foO.com"
+    @user.email = invalid_emails
+    @user.save
+    assert_equal invalid_emails.downcase, @user.reload.email
+
+  end
+
+
 
   test "password length" do
    @user.password = @user.password_confirmation = "a"*5
