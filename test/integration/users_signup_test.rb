@@ -24,6 +24,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   		password: "hhhhhh", password_confirmation: "hhhhhh"}
   	end
  	assert_template 'users/show'
+  assert is_logged_in?
  end
 
  test "flash message displayed on signup success" do
