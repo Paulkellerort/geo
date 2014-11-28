@@ -8,6 +8,8 @@ get 'help' => 'static_pages#help'
 get 'about' => 'static_pages#about'
 get 'contact' => 'static_pages#contact'
 get 'signup' => 'users#new'
+get 'map' => 'static_pages#map'
+
 get 'login' => 'sessions#new'
 post 'login' => 'sessions#create'
 delete 'logout' => 'sessions#destroy'
