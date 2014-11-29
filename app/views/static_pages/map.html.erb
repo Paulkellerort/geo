@@ -10,7 +10,7 @@
     <script type="text/javascript">
       
 function initialize() {
-  var myLatlng = new google.maps.LatLng(47.624289,-122.315652);
+  var myLatlng = new google.maps.LatLng(<%= current_user.latitude %>,<%= current_user.longitude %>);
   var mapOptions = {
     zoom: 10,
     center: myLatlng
